@@ -28,6 +28,14 @@
 </script>
 </head>
 <body>
+	<%--
+		요청시 부가정보 전달용 태그
+	 --%>
+	 <form method="POST" action="" id="frm" name="frm">
+	 	<input type="hidden" name="mno" id="smno">
+	 	<input type="hidden" name="id" id="sid">
+	 </form>
+
 	<div class="w3-content mx650">
 <c:if test="${DATA.gen ne 'F'}">
 		<h1 class="w3-blue w3-center w3-padding w3-card-4">

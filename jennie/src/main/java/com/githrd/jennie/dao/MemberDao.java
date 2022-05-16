@@ -291,4 +291,59 @@ public class MemberDao {
 		// 데이터 반환해주고
 		return mVO;
 	}
+	
+	// 회원탈퇴 데이터베이스작업 전담 처리함수
+	public int delMember(int mno) {
+		// 할일
+		// 반환값 변수
+		int cnt = 0;
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = mSQL.getSQL(mSQL.DEL_MEMBER);
+		// 명령전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try{
+			// 질의명령 완성
+			pstmt.setInt(1, mno);
+			// 질의명령 보내고 결과받고..
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 결과 반환하고
+		return cnt;
+	}
+	
+	// 회원정보수정 데이터베이스 작업 전담 처리함수
+	public int editMyInfo(int mno, String psql) {
+		// 반환값 변수
+		int cnt = 0;
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = mSQL.getSQL(mSQL.EDIT_MEMBER);
+		// 질의명령 수정하고
+		sql = sql.replace("###", psql);
+		
+		// 명령 전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성하고
+			pstmt.setInt(1, mno);
+			// 질의명령 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		// 결과 반환하고
+		return cnt;
+	}
 }

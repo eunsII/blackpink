@@ -76,3 +76,29 @@
 컨트롤러	: 	com.githrd.whistle.controller.member.MyInfo
 뷰			:	/WEB-INF/views/whistle/member/memberInfo.jsp
 --------------------------------------------------------------
+# 회원 탈퇴 처리 요청 
+요청내용	: 	/whistle/member/delInfo.blp
+파라미터	:	mno, id(신원확인용)
+컨트롤러	: 	com.githrd.whistle.controller.member.DelInfo
+뷰			:	
+				redirect ]
+					성공 :	/whistle/
+					실패 :  /whistle/member/myInfo.blp
+					
+--------------------------------------------------------------
+# 내정보 수정 폼보기 요청 
+요청내용	: 	/whistle/member/editInfo.blp
+파라미터	:	무
+컨트롤러	: 	com.githrd.whistle.controller.member.EditInfo
+뷰			:	/WEB-INF/views/whistle/member/editInfo.jsp
+--------------------------------------------------------------
+# 회원 수정 처리 요청 
+요청내용	: 	/whistle/member/editProc.blp
+파라미터	:	mno, pw, mail, tel, ano 
+컨트롤러	: 	com.githrd.whistle.controller.member.EditProc
+뷰			:	
+				redirect ]
+					성공 :	/whistle/member/myInfo.blp
+					실패 :  /whistle/member/editInfo.blp
+					
+--------------------------------------------------------------

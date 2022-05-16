@@ -28,7 +28,7 @@ public class MyInfo implements BlpInter {
 		 */
 		String view = "/member/memberInfo";
 		if(sid == null) {
-			req.setAttribute("isRirect", true);
+			req.setAttribute("isRedirect", true);
 			view = "/whistle/member/login.blp";
 			return view;
 		}
