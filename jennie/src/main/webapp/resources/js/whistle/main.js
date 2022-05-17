@@ -22,5 +22,8 @@
 	$('#ibtn').click(function(){
 		$(location).attr('href', '/whistle/member/myInfo.blp');
 	});
+	$('#gbtn').click(function(){
+		$(location).attr('href', '/whistle/guestBoard/gBoardList.blp');
+	});
 });
  
