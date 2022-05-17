@@ -59,15 +59,34 @@
 		<!-- 페이지 처리 시작 -->
 		<div class="w3-center">
 			<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="prebtn">&laquo;</div>
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="1">1</div>
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="2">2</div>
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="3">3</div>
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="nextbtn">&raquo;</div>
+	<c:if test="${PAGE.startPage eq 1}">
+				<div class="w3-bar-item w3-light-grey">&laquo;</div>
+	</c:if>
+	<c:if test="${PAGE.startPage ne 1}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
+	</c:if>
+	<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
+			<c:if test="${page eq PAGE.nowPage}">
+				<div class="w3-bar-item w3-orange">${page}</div>
+			</c:if>
+			<c:if test="${page ne PAGE.nowPage}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${page}">${page}</div>
+			</c:if>
+	</c:forEach>
+			<c:if test="${PAGE.endPage eq PAGE.totalPage}">
+				<div class="w3-bar-item w3-light-grey">&raquo;</div>
+			</c:if>
+			<c:if test="${PAGE.endPage ne PAGE.totalPage}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
+			</c:if>
 			</div>
 		</div>
 		<!-- 페이지 처리 태그 끝 -->
-		
 	</div>
+	
+	<!-- 데이터 전송용 form 태그 -->
+	<form method="POST" action="/whistle/guestBoard/gBoardList.blp" id="frm" name="frm">
+		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
+	</form>
 </body>
 </html>

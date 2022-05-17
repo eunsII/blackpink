@@ -11,4 +11,12 @@ $(document).ready(function(){
 	$('#obtn').click(function(){
 		$(location).attr('href', '/whistle/member/logout.blp');
 	});
+	$('.pbtn').click(function(){
+		// 데이터 읽어오고
+		var page = $(this).attr('id');
+		
+		// 데이터 셋팅하고
+		$('#nowPage').val(page);
+		$('#frm').submit();
+	});
 });

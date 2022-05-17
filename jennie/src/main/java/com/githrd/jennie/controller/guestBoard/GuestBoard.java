@@ -39,9 +39,12 @@ public class GuestBoard implements BlpInter {
 		if(sid != null) {
 			cnt = gDao.getWriteCount(sid);
 		}
+		
 		// 뷰에 데이터 심고
 		req.setAttribute("LIST", list);
 		req.setAttribute("CNT", cnt);
+		req.setAttribute("PAGE", page);
+		
 		// 뷰 부르고
 		return view;
 	}
