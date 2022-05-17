@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.githrd.jennie.controller.*;
 import com.githrd.jennie.dao.*;
 import com.githrd.jennie.vo.*;
+import com.githrd.jennie.util.*;
 
 public class GuestBoard implements BlpInter {
 
@@ -17,13 +18,30 @@ public class GuestBoard implements BlpInter {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/guestBoard/gBoardList";
 		
-		// 데이터베이스에서 게시글 리스트 가져오고
-		GBoardDao gDao = new GBoardDao();
-		ArrayList<BoardVO> list = gDao.getGBoardList();
+		// 현재 보고있는 페이지 
+		String spage = req.getParameter("nowPage");
+		int nowPage = 1;
+		if(spage != null) {
+			nowPage = Integer.parseInt(spage);
+		}
 		
+		GBoardDao gDao = new GBoardDao();
+		// 총 게시글 수 조회
+		int total = gDao.getTotal();
+		
+		// 페이지 객체 만들고
+		PageUtil page = new PageUtil(nowPage, total);
+		
+		// 데이터베이스에서 게시글 리스트 가져오고
+		ArrayList<BoardVO> list = gDao.getGBoardList(page);
+		int cnt = 0 ;
+		String sid = (String) req.getSession().getAttribute("SID");
+		if(sid != null) {
+			cnt = gDao.getWriteCount(sid);
+		}
 		// 뷰에 데이터 심고
 		req.setAttribute("LIST", list);
-		
+		req.setAttribute("CNT", cnt);
 		// 뷰 부르고
 		return view;
 	}

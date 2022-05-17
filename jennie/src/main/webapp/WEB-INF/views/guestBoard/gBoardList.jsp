@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/user.css">
 <script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/whistle/resources/js/whistle/gboard.js"></script>
 <style type="text/css">
 	.w3-button {
 		padding: 1px 16px;
@@ -29,10 +30,10 @@
 				<div class="w3-col w150 w3-button w3-small w3-orange w3-right" id="jbtn">join</div>
 </c:if>
 <c:if test="${not empty SID}">
+				<div class="w3-col w150 w3-button w3-small w3-red w3-right" id="obtn">logout</div>
 	<c:if test="${CNT eq 0}">
 				<div class="w3-col w150 w3-button w3-small w3-orange w3-right" id="wbtn">글작성</div>
 	</c:if>
-				<div class="w3-col w150 w3-button w3-small w3-red w3-right" id="obtn">logout</div>
 </c:if>
 			</nav>
 		</header>
@@ -54,7 +55,19 @@
 			</div>
 		</div>
 </c:forEach>
-		<!-- 페이지 처리 -->
+		
+		<!-- 페이지 처리 시작 -->
+		<div class="w3-center">
+			<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="prebtn">&laquo;</div>
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="1">1</div>
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="2">2</div>
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="3">3</div>
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="nextbtn">&raquo;</div>
+			</div>
+		</div>
+		<!-- 페이지 처리 태그 끝 -->
+		
 	</div>
 </body>
 </html>
