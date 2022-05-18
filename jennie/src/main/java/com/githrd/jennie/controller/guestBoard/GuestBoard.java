@@ -3,9 +3,8 @@ package com.githrd.jennie.controller.guestBoard;
 import java.io.*;
 import java.util.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import com.githrd.jennie.controller.*;
 import com.githrd.jennie.dao.*;
