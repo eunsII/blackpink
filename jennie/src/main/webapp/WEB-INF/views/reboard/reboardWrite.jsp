@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BlackPink 댓글게시판</title>
+<title>BlackPink 댓글 게시판 글작성</title>
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/user.css">
 <script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
@@ -28,7 +28,7 @@
 	<div class="w3-content mxw750 w3-margin-top">
 		<!-- 페이지 헤더 -->
 		<header class="w3-col w3-card-4 mgb20">
-			<h1 class="w3-pink w3-center w3-padding mg0">BlackPink 댓글 게시판</h1>
+			<h1 class="w3-pink w3-center w3-padding mg0">BlackPink 댓글 게시글 작성</h1>
 			<nav class="w3-bar w3-amber">
 				<div class="w3-col w150 w3-button w3-small w3-green menubtn" id="hbtn">home</div>
 <c:if test="${empty SID}">
@@ -43,7 +43,6 @@
 		</header>
 		
 		<!-- 페이지 본문 -->
-<c:forEach var="data" items="${LIST}">
 		<div class="w3-col" style="padding-left: ${data.step * 70}px">
 			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
 				<div class="w3-col box120 pdAll10 w3-border-right">
@@ -52,54 +51,28 @@
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
-						<div class="w3-col w3-twothird w3-right">
-							<div class="w3-col w3-button w3-small w70 w3-blue w3-right">댓글</div>
-		<c:if test="${SID eq data.id}">
-							<div class="w3-col w3-button w3-small w70 w3-orange w3-right">수정</div>
-							<div class="w3-col w3-button w3-small w70 w3-red w3-right">삭제</div>
-		</c:if>
-						</div>
-						<span class="w3-third w3-left mgb10 ft10"><small>${data.sdate}</small></span>
+						<span class="w3-third w3-left mgb10 ft10 "><strong>글 내용</strong></span>
 					</div>
-					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.body}</span>
-					</div>
+					<form method="POST" action="/whistle/reboard/reboardList.blp" 
+											id="frm" name="frm" class="w3-col w3-margin-top">
+						<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
+						<%--
+							요청객체에 입력해 놓은 속성을 EL에서 꺼내는 방법은
+								${requestScope.속성키값}
+							세션의 경우
+								${sessionScope.속성키값}
+						 --%>
+						<textarea class="w3-col w3-padding ft12" id="body"
+									style="resize: none;"></textarea>
+					</form>
 				</div>
 			</div>
 		</div>
-</c:forEach>
 		
-		<!-- 페이지 처리 시작 -->
-		<div class="w3-center">
-			<div class="w3-bar w3-border w3-round-medium w3-card w3-margin-top w3-margin-bottom">
-	<c:if test="${PAGE.startPage eq 1}">
-				<div class="w3-bar-item w3-light-grey">&laquo;</div>
-	</c:if>
-	<c:if test="${PAGE.startPage ne 1}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
-	</c:if>
-	<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
-			<c:if test="${page eq PAGE.nowPage}">
-				<div class="w3-bar-item w3-orange">${page}</div>
-			</c:if>
-			<c:if test="${page ne PAGE.nowPage}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${page}">${page}</div>
-			</c:if>
-	</c:forEach>
-			<c:if test="${PAGE.endPage eq PAGE.totalPage}">
-				<div class="w3-bar-item w3-light-grey">&raquo;</div>
-			</c:if>
-			<c:if test="${PAGE.endPage ne PAGE.totalPage}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
-			</c:if>
-			</div>
-		</div>
-		<!-- 페이지 처리 태그 끝 -->
-	</div>
-	
-	<!-- 데이터 전송용 form 태그 -->
-	<form method="POST" action="/whistle/reboard/reboardList.blp" id="frm" name="frm">
-		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
-	</form>
+		<div class="w3-col w3-margin-top w3-card-4">
+			<div class="w3-third w3-button w3-green" id="listbtn">리스트</div>
+			<div class="w3-third w3-button w3-blue" id="rbtn">리셋</div>
+			<div class="w3-third w3-button w3-deep-orange" id="wpbtn">글등록</div>
+		</div>	
 </body>
 </html>
