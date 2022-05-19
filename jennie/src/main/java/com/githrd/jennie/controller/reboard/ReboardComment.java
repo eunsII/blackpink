@@ -6,7 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.githrd.jennie.controller.BlpInter;
+import com.githrd.jennie.controller.*;
+import com.githrd.jennie.dao.*;
+import com.githrd.jennie.vo.*;
 
 public class ReboardComment implements BlpInter {
 
@@ -15,15 +17,21 @@ public class ReboardComment implements BlpInter {
 		String view = "/reboard/reboardComment";
 		// 할일
 		// 로그인 체크
+		String sid = (String) req.getSession().getAttribute("SID");
+		if(sid == null) {
+			req.setAttribute("isRedirect", true);
+			return "/whistle/member/login.blp";
+		}
 		
 		// 파라미터 받고
-		
+		String sno = req.getParameter("bno");
+		int bno = Integer.parseInt(sno);
+		String spage = req.getParameter("nowPage");
 		// 데이터베이스 조회
-		
-		// VO 만들어서 데이터 채우고
-		
+		ReboardDao rDao = new ReboardDao();
+		BoardVO bVO = rDao.getReboardInfo(bno, sid);
 		// 데이터 심고
-		
+		req.setAttribute("DATA", bVO);
 		// 뷰 부르고...
 		return view;
 	}

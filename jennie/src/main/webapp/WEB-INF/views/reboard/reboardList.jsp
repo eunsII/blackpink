@@ -55,14 +55,14 @@
 						<div class="w3-col w3-twothird w3-right" id="${data.bno}">
 							<div class="w3-col w3-button w3-small w70 w3-blue w3-right">댓글</div>
 		<c:if test="${SID eq data.id}">
-							<div class="w3-col w3-button w3-small w70 w3-orange w3-right" >수정</div>
+							<div class="w3-col w3-button w3-small w70 w3-orange w3-right">수정</div>
 							<div class="w3-col w3-button w3-small w70 w3-red w3-right">삭제</div>
 		</c:if>
 						</div>
 						<span class="w3-third w3-left mgb10 ft10"><small>${data.sdate}</small></span>
 					</div>
 					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12" id="bd${data.bno}">${data.body}</span>
+						<span class="w3-col w3-padding ft12">${data.body}</span>
 					</div>
 				</div>
 			</div>

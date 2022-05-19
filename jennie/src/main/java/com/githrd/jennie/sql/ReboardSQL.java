@@ -49,13 +49,13 @@ public class ReboardSQL {
 			break;
 		case SEL_REBOARD_INFO:
 			buff.append("SELECT ");
-			buff.append("    rbno, body, id, savename ");
+			buff.append("    rbno, body, mno, id, savename ");
 			buff.append("FROM ");
 			buff.append("	reboard r, member m, avatar a ");
 			buff.append("WHERE ");
 			buff.append("	r.isshow = 'Y' ");
-			buff.append("	AND  rbno = ? ");
 			buff.append("	AND  avt = ano ");
+			buff.append("	AND  rbno = ? ");
 			buff.append("	AND  id = ? ");
 			break;
 		case SEL_WRITER_INFO:

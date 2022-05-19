@@ -142,4 +142,39 @@ public class ReboardDao {
 		// 결과 내보내고
 		return cnt;
 	}
+	
+	// 댓글 쓰기 사용데이터 조회 전담 처리함수
+	public BoardVO getReboardInfo(int bno, String id) {
+		BoardVO bVO = new BoardVO();
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = rSQL.getSQL(rSQL.SEL_REBOARD_INFO);
+		// 명령전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성
+			pstmt.setInt(1, bno);
+			pstmt.setString(2, id);
+			// 보내고 결과받고
+			rs = pstmt.executeQuery();
+			// 꺼내서 VO에 담고
+			rs.next();
+			bVO.setUpno(rs.getInt("rbno"));
+			String body = rs.getString("body");
+			body = (body.length() >= 10) ? (body.substring(0, 10) + "...") : body;
+			bVO.setBody(body);
+			bVO.setMno(rs.getInt("mno"));
+			bVO.setId(rs.getString("id"));
+			bVO.setAvatar(rs.getString("savename"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		// VO 반환하고
+		return bVO;
+	}
 }
