@@ -37,25 +37,25 @@
 </c:if>
 <c:if test="${not empty SID}">
 				<div class="w3-col w150 w3-button w3-small w3-red w3-right menubtn" id="obtn">logout</div>
-				<div class="w3-col w150 w3-button w3-small w3-orange w3-right menubtn" id="wbtn">글작성</div>
 </c:if>
 			</nav>
 		</header>
 		
 		<!-- 페이지 본문 -->
-		<div class="w3-col" style="padding-left: ${data.step * 70}px">
+		<div class="w3-col">
 			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
 				<div class="w3-col box120 pdAll10 w3-border-right">
-					<img src="/whistle/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
-					<span class="w3-col w3-center ft10 mid"><b>${data.id}</b></span>
+					<img src="/whistle/resources/img/avatar/${requestScope.DATA.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
+					<span class="w3-col w3-center ft10 mid"><b>${sessionScope.SID}</b></span>
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
 						<span class="w3-third w3-left mgb10 ft10 "><strong>글 내용</strong></span>
 					</div>
-					<form method="POST" action="/whistle/reboard/reboardList.blp" 
+					<form method="POST" action="/whistle/reboard/reboardWriteProc.blp" 
 											id="frm" name="frm" class="w3-col w3-margin-top">
 						<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
+						<input type="hidden" id="mno" name="mno" value="${DATA.mno}">
 						<%--
 							요청객체에 입력해 놓은 속성을 EL에서 꺼내는 방법은
 								${requestScope.속성키값}

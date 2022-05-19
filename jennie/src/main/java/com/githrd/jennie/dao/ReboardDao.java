@@ -86,4 +86,34 @@ public class ReboardDao {
 		}
 		return cnt;
 	}
+	
+	// 작성자 정보조회 전담 처리함수
+	public BoardVO getWriterInfo(String id) {
+		// 반환값 변수
+		BoardVO bVO = new BoardVO();
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = rSQL.getSQL(rSQL.SEL_WRITER_INFO);
+		// 명령전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령완성
+			pstmt.setString(1, id);
+			// 보내고 결과 받고
+			rs = pstmt.executeQuery();
+			// 데이터 꺼내서 VO 에 담고
+			rs.next();
+			bVO.setMno(rs.getInt("mno"));
+			bVO.setAvatar(rs.getString("savename"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		// VO 반환하고
+		return bVO;
+	}
 }
