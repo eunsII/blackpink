@@ -100,7 +100,7 @@
 	<!-- 데이터 전송용 form 태그 -->
 	<form method="POST" action="/whistle/reboard/reboardList.blp" id="frm" name="frm">
 		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" id="bno" name="bno" >
+		<input type="hidden" id="bno" name="bno">
 	</form>
 </body>
 </html>
