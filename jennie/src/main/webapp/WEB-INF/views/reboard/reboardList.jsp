@@ -52,17 +52,17 @@
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
-						<div class="w3-col w3-twothird w3-right">
+						<div class="w3-col w3-twothird w3-right" id="${data.bno}">
 							<div class="w3-col w3-button w3-small w70 w3-blue w3-right">댓글</div>
 		<c:if test="${SID eq data.id}">
-							<div class="w3-col w3-button w3-small w70 w3-orange w3-right">수정</div>
+							<div class="w3-col w3-button w3-small w70 w3-orange w3-right" >수정</div>
 							<div class="w3-col w3-button w3-small w70 w3-red w3-right">삭제</div>
 		</c:if>
 						</div>
 						<span class="w3-third w3-left mgb10 ft10"><small>${data.sdate}</small></span>
 					</div>
 					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.body}</span>
+						<span class="w3-col w3-padding ft12" id="bd${data.bno}">${data.body}</span>
 					</div>
 				</div>
 			</div>
@@ -100,6 +100,7 @@
 	<!-- 데이터 전송용 form 태그 -->
 	<form method="POST" action="/whistle/reboard/reboardList.blp" id="frm" name="frm">
 		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
+		<input type="hidden" id="bno" name="bno" >
 	</form>
 </body>
 </html>

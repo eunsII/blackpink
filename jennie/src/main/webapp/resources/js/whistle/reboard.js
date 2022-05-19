@@ -57,6 +57,26 @@ $(document).ready(function(){
 		$(location).attr('href', addr);
 	});
 	
+	$('.w3-button.w70').click(function(){
+		// 어떤 버튼이 클릭이 되었는지 알아내고
+		var btxt = $(this).html();
+		
+		// 글번호 읽어오기
+		var sno = $(this).parent().attr('id');
+		
+		if(btxt == '댓글'){		
+			$('#bno').val(sno);
+			
+			$('#frm').attr('action', '/whistle/reboard/reboardComment.blp');
+		
+			$('#frm').submit();
+		}
+	});
+	
+	
+	
+	
+	/* 글쓰기 페이지 */
 	$('#listbtn').click(function(){
 		// form 태그의 액션 속성값 변경
 		$('#frm').attr('action', '/whistle/reboard/reboardList.blp');
@@ -74,7 +94,6 @@ $(document).ready(function(){
 	$('#wpbtn').click(function(){
 		// 입력된 글 유효성 검사
 		var txt = $('#body').val();
-		
 		txt = txt.trim();
 		if(!txt || txt.length == 0){
 			$('#body').val('');

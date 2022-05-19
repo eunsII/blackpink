@@ -116,4 +116,30 @@ public class ReboardDao {
 		// VO 반환하고
 		return bVO;
 	}
+	
+	// 원글등록 데이터베이스작업 전담 처리함수
+	public int addReboard(BoardVO bVO) {
+		int cnt = 0 ;
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = rSQL.getSQL(rSQL.INSERT_REBOARD);
+		// 명령전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성
+			pstmt.setNull(1, java.sql.Types.NULL);
+			pstmt.setInt(2, bVO.getMno());
+			pstmt.setString(3, bVO.getBody());
+			// 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 결과 내보내고
+		return cnt;
+	}
 }
