@@ -28,6 +28,9 @@
 	$('#rbtn').click(function(){
 		$(location).attr('href', '/whistle/reboard/reboardList.blp');
 	});
+	$('#fbtn').click(function(){
+		$(location).attr('href', '/whistle/board/boardList.blp');
+	});
 	
 });
  
