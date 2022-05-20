@@ -84,19 +84,16 @@ $(document).ready(function(){
 		// 글번호 읽어오기
 		var sno = $(this).parent().attr('id');
 		
+		$('#bno').val(sno);
 		if(btxt == '댓글'){		
-			$('#bno').val(sno);
-			
 			$('#frm').attr('action', '/whistle/reboard/reboardComment.blp');
-		
-			$('#frm').submit();
 		} else if(btxt == '삭제'){
-			$('#bno').val(sno);
 			$('#frm').attr('action', '/whistle/reboard/reboardDel.blp');
-			$('#frm').submit();
-			
-			
+		} else if(btxt == '수정'){
+			$('#frm').attr('action', '/whistle/reboard/reboardEdit.blp');
 		}
+		
+		$('#frm').submit();
 	});
 	
 	/* 글쓰기 페이지 */
@@ -129,18 +126,22 @@ $(document).ready(function(){
 		$('#frm').submit();
 	});
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	$('#editbtn').click(function(){
+		// 할일
+		// 데이터 읽고
+		var txt = $('#body').val();
+		var otxt = $('#obody').val();
+		if(txt == otxt){
+			return;
+		}
+		
+		if(txt.length > 200){
+			$('#body').val(txt.substring(0, 200));
+			alert('작성가능한 글자수는 200자입니다.');
+			return;
+		}
+		
+		$('#frm').submit();
+	});
 	
 });

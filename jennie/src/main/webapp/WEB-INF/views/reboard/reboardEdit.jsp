@@ -52,11 +52,11 @@
 					<div class="w3-col w3-border-bottom">
 						<span class="w3-col w3-left mgb10 ft10 "><strong>${DATA.sdate}</strong></span>
 					</div>
-					<form method="POST" action="/whistle/reboard/reboardWriteProc.blp" 
+					<input type="hidden" id="obody" value="${DATA.body}">
+					<form method="POST" action="/whistle/reboard/reboardEditProc.blp" 
 											id="frm" name="frm" class="w3-col w3-margin-top">
 						<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
-						<input type="hidden" id="mno" name="mno" value="${DATA.mno}">
-						<input type="hidden" id="upno" name="upno" value="${DATA.upno}">
+						<input type="hidden" id="bno" name="bno" value="${DATA.bno}">
 						<textarea class="w3-col w3-input w3-border w3-padding ft12" id="body" name="body"
 									rows="3" style="resize: none;">${DATA.body}</textarea>
 					</form>

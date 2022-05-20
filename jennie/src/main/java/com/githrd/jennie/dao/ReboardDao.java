@@ -182,6 +182,62 @@ public class ReboardDao {
 		return bVO;
 	}
 	
+	// 댓글 쓰기 사용데이터 조회 전담 처리함수
+	public BoardVO getEditData(int bno, String id) {
+		BoardVO bVO = new BoardVO();
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = rSQL.getSQL(rSQL.SEL_REBOARD_INFO);
+		// 명령전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성
+			pstmt.setInt(1, bno);
+			pstmt.setString(2, id);
+			// 보내고 결과받고
+			rs = pstmt.executeQuery();
+			// 꺼내서 VO에 담고
+			rs.next();
+			bVO.setBno(rs.getInt("rbno"));
+			bVO.setBody(rs.getString("body"));
+			bVO.setMno(rs.getInt("mno"));
+			bVO.setId(rs.getString("id"));
+			bVO.setAvatar(rs.getString("savename"));
+			bVO.setWdate(rs.getDate("wdate"));
+			bVO.setWtime(rs.getTime("wdate"));
+			bVO.setSdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		// VO 반환하고
+		return bVO;
+	}
+	
+	// 게시글 수정 데이터베이스 작업 전담 처리함수
+	public int editReboard(int bno, String body) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = rSQL.getSQL(rSQL.UPDATE_REBOARD);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, body);
+			pstmt.setInt(2, bno);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+		
+	}
+	
 	// 게시글 삭제 데이터베이스작업 전담 처리함수
 	public int delReboard(int rbno) {
 		int cnt = 0;
