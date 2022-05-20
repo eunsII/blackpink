@@ -57,6 +57,26 @@ $(document).ready(function(){
 		$(location).attr('href', addr);
 	});
 	
+	/* 댓글등록 버튼 클릭 이벤트 */
+	$('#cmtbtn').click(function(){
+		var btxt = $('#body').val();
+		btxt = btxt.trim();
+		
+		if(!btxt){
+			$('#body').focus();
+			return;
+		}
+		
+		if(btxt.length > 200){
+			btxt = btxt.subString(0, 200);
+			$('#body').val(btxt);
+			alert('코멘트의 글자수는 200자를 초과할 수 없습니다.');
+			return;
+		}
+		
+		$('#frm').submit();
+	});
+	
 	$('.w3-button.w70').click(function(){
 		// 어떤 버튼이 클릭이 되었는지 알아내고
 		var btxt = $(this).html();
@@ -70,11 +90,14 @@ $(document).ready(function(){
 			$('#frm').attr('action', '/whistle/reboard/reboardComment.blp');
 		
 			$('#frm').submit();
+		} else if(btxt == '삭제'){
+			$('#bno').val(sno);
+			$('#frm').attr('action', '/whistle/reboard/reboardDel.blp');
+			$('#frm').submit();
+			
+			
 		}
 	});
-	
-	
-	
 	
 	/* 글쓰기 페이지 */
 	$('#listbtn').click(function(){

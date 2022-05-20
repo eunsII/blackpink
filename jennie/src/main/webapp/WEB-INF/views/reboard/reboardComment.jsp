@@ -50,7 +50,7 @@
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
-						<span class="w3-col w3-left mgb10 ft10 "><strong>글 내용 : </strong>${DATA.body}${DATA.body.length() le 10 ? '': '...'}</span>
+						<span class="w3-col w3-left mgb10 ft10 "><strong>윗글 내용 : </strong>${DATA.body}${DATA.body.length() le 10 ? '': '...'}</span>
 					</div>
 					<form method="POST" action="/whistle/reboard/reboardWriteProc.blp" 
 											id="frm" name="frm" class="w3-col w3-margin-top">
@@ -63,14 +63,14 @@
 							세션의 경우
 								${sessionScope.속성키값}
 						 --%>
-						<textarea class="w3-col w3-padding ft12" id="body" name="body"
-									style="resize: none;"></textarea>
+						<textarea class="w3-col w3-input w3-border w3-padding ft12" id="body" name="body"
+									rows="3" style="resize: none;"></textarea>
 					</form>
 				</div>
 			</div>
 		</div>
 		
-		<div class="w3-col w3-margin-top w3-card-4">
+		<div class="w3-col w3-card-4">
 			<div class="w3-third w3-button w3-green" id="listbtn">리스트</div>
 			<div class="w3-third w3-button w3-blue" id="rbtn">리셋</div>
 			<div class="w3-third w3-button w3-deep-orange" id="cmtbtn">댓글등록</div>
