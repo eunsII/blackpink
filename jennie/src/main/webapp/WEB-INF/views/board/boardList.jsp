@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<title>BlackPink 댓글게시판</title>
+<title>BlackPink 게시판 리스트</title>
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/user.css">
 <script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
@@ -29,7 +28,12 @@
 	}
 </style>
 <script type="text/javascript">
-
+	$(document).ready(function(){
+		$('#wbtn').click(function(){
+			alert('*****');
+			$(location).attr('href', '/whistle/board/boardWrite.blp');
+		});
+	});
 </script>
 </head>
 <body class="w3-light-grey">
