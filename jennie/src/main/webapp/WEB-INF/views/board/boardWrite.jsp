@@ -27,32 +27,13 @@
 		<h1 class="w3-blue w3-padding w3-center w3-card-4">게시글 작성</h1>
 		<form method="POST" action="/whistle/board/boardWriteProc.blp" encType="multipart/form-data"
 				id="frm" name="frm" class="w3-col w3-card-4 w3-padding">
-				
-			<%--
-				파일 전송기능은
-				이제까지 우리는 서버와 통신을 할 때 파라미터 방식(문자) 으로 통신을 했는데
-				파일 전송의 경우는 스트림 방식으로 전송이 이루어져야 한다.
-				
-				이렇게 클라이언트가 서버에게 스트림 방식으로 데이터를 전달할 수 있는 방법
-				form 태그의 속성에
-					encType="multipart/form-data"
-				라고 기입해야 한다.
-			 --%>
 			<div class="w3-col w3-margin-top w3-margin-bottom pdr20">
 				<label for="title" class="w3-col m2">Title</label>
 				<input type="text" class="w3-col m10 w3-input w3-border">
 			</div>
 			<div class="w3-col w3-margin-bottom pdr20">
 				<label class="w3-col m2">File</label>
-				<div class="w3-col m10 filebox">
-					<input type="file" id="file1" name="file1" class="w3-input w3-border w3-margin-bottom upfile">
-					<input type="file" id="file2" name="file2" class="w3-input w3-border w3-margin-bottom upfile">
-					<input type="file" id="file3" name="file3" class="w3-input w3-border w3-margin-bottom upfile">
-				</div>
-			</div>
-			<div class="w3-col w3-margin-bottom w3-hide pdr20">
-				<label class="w3-col m2">미리보기</label>
-				<div class="w3-col m10 filebox">
+				<div class="w3-col m10">
 					<input type="file" id="file1" name="file1" class="w3-input w3-border w3-margin-bottom">
 					<input type="file" id="file2" name="file2" class="w3-input w3-border w3-margin-bottom">
 					<input type="file" id="file3" name="file3" class="w3-input w3-border w3-margin-bottom">
