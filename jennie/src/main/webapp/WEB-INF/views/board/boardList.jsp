@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/whistle/resources/css/user.css">
 <script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/whistle/resources/js/whistle/board.js"></script>
 <style type="text/css">
 	html, body {
 		height: 100%;
@@ -28,12 +29,7 @@
 	}
 </style>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#wbtn').click(function(){
-			alert('*****');
-			$(location).attr('href', '/whistle/board/boardWrite.blp');
-		});
-	});
+
 </script>
 </head>
 <body class="w3-light-grey">
