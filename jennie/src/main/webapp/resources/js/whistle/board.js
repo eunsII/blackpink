@@ -73,8 +73,6 @@ $(document).ready(function(){
 	});
 	
 	$('#wpbtn').click(function(){
-		$('.upfile').last().prop('disabled', true);
-		
 		var title = $('#title').val();
 		if(!title) {
 			$('#title').focus();
@@ -94,6 +92,8 @@ $(document).ready(function(){
 				$(el).eq(i).prop('disabled', true);
 			}
 		}
+		
+		$('.upfile').last().prop('disabled', true);
 		
 		$('#frm').submit();
 	});
