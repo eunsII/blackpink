@@ -34,8 +34,9 @@
 <body class="w3-light-grey">
 	<form method="POST" action="/whistle/board/boardDetail.blp" id="frm" name="frm">
 		<input type="hidden" name="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" name="bno" >
+		<input type="hidden" name="bno">
 	</form>
+	
 	<div class="w3-content mxw700">
 		<!-- 페이지 헤더 -->
 		<header class="w3-col w3-card-4 mgb20">
